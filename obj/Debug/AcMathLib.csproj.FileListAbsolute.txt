@@ -1,0 +1,4 @@
+C:\Users\Acodeks\Documents\Visual Studio 2010\Projects\MDI\LPM200S\AcMathLib\bin\Debug\AcMathLib.dll
+C:\Users\Acodeks\Documents\Visual Studio 2010\Projects\MDI\LPM200S\AcMathLib\bin\Debug\AcMathLib.pdb
+C:\Users\Acodeks\Documents\Visual Studio 2010\Projects\MDI\LPM200S\AcMathLib\obj\Debug\AcMathLib.dll
+C:\Users\Acodeks\Documents\Visual Studio 2010\Projects\MDI\LPM200S\AcMathLib\obj\Debug\AcMathLib.pdb
