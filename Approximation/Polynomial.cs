@@ -17,7 +17,7 @@ namespace MathLib.Approximation {
 
 		public List<double> HueToGapTable { get; set; }
 
-		public string ConversionMethodText {
+		public string PolynomialMethodText {
 			get {
 				return string.Format ( "y = {0}x^3{1}x^2{2}x{3}", FactorA4.ToString ( "f30" ), FactorA3.ToString ( "+0.000000000000000000000000000000;-0.000000000000000000000000000000" ),
 					FactorA2.ToString ( "+0.000000000000000000000000000000;-0.000000000000000000000000000000" ), FactorA1.ToString ( "+0.000000000000000000000000000000;-0.000000000000000000000000000000" ) );

@@ -5,8 +5,29 @@ using System.Text;
 using MathLib.Data;
 
 namespace MathLib.Caliper {
+/// <summary>
+/// 幾何計算関係
+/// </summary>
 	public class Function {
-	
+		
+		/// <summary>
+		/// 点の回転
+		/// </summary>
+		/// <param name="point">対象座標</param>
+		/// <param name="axis">回転軸</param>
+		/// <param name="angle">角度</param>
+		/// <returns></returns>
+		public static PointD PointRotation(PointD point, PointD axis, AngleData angle){
+			PointD rotate = new PointD();
+
+			double ad = axis.X - point.X;
+			double bd = axis.Y - point.Y;
+
+			rotate.X = ((Math.Cos(angle.Radian) * ad + -1 * Math.Sin(angle.Radian) * bd) + axis.X);
+			rotate.Y = ((Math.Sin(angle.Radian) * ad + Math.Cos(angle.Radian) * bd) + axis.Y);
+
+			return rotate;
+		}
 
 		/// <summary>
 		/// 内積(２次元ベクトル)
@@ -30,6 +51,22 @@ namespace MathLib.Caliper {
 			center.Y = plist.Sum(p => p.Y) / plist.Count;
 
 			return center;
+		}
+
+		/// <summary>
+		/// 線対称の点を求める
+		/// </summary>
+		/// <param name="line">線対称となる直線</param>
+		/// <param name="target">線対称を求める頂点</param>
+		/// <param name="round">有効な小数点桁</param>
+		/// <returns></returns>
+		public static PointD LineSymmetricPoint(Line line, PointD target) {
+			PointD p = new PointD();
+
+			p.X = target.X - ((2 * line.A * (line.A * target.X + line.B * target.Y + line.C)) / (line.A * line.A + line.B * line.B));
+			p.Y = target.Y - ((2 * line.B * (line.A * target.X + line.B * target.Y + line.C)) / (line.A * line.A + line.B * line.B));
+
+			return p;
 		}
 
 		/// <summary>
@@ -110,6 +147,36 @@ namespace MathLib.Caliper {
 			innerCenter.Y = ( a * A.Y + b * B.Y + c * C.Y ) / ( a + b + c );
 
 			return innerCenter;
+		}
+
+		/// <summary>
+		/// 単位ベクトル作成
+		/// </summary>
+		/// <param name="p1"></param>
+		/// <param name="p2"></param>
+		/// <returns></returns>
+		public static PointD UnitVector(PointD p1, PointD p2) {
+			PointD vector = new PointD(p2.X - p1.X, p2.Y - p1.Y);
+			vector.X = vector.X != 0 ? vector.X / Math.Abs(vector.X) : 0;
+			vector.Y = vector.Y != 0 ? vector.Y / Math.Abs(vector.Y) : 0;
+			return vector;
+		}
+
+		/// <summary>
+		/// ベクトル間の距離を算出
+		/// </summary>
+		/// <param name="v1"></param>
+		/// <param name="v2"></param>
+		/// <returns></returns>
+		public static double VectorRange(PointD v1, PointD v2) {
+			double range = 0;
+
+			double xrange = v2.X - v1.X;
+			double yrange = v2.Y - v1.Y;
+
+			range = Math.Sqrt(xrange * xrange + yrange * yrange);
+
+			return range;
 		}
 
 		/// <summary>

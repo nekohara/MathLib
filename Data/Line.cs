@@ -14,7 +14,7 @@ namespace MathLib.Data {
 		public Line(double a, double b, double c){
 			A = a;
 			B = b;
-			C =c;
+			C = c;
 		}
 
 		public Line(PointD p1, PointD p2) {
@@ -32,16 +32,12 @@ namespace MathLib.Data {
 		/// <returns>移動座標</returns>
 		public PointD CalculateShiftPoint(PointD point, double shift, PointD direction) {
 			PointD p = point;
-			//double dirX = point.X < direction.X ? -1 : 1;
-			//double dirY = point.Y < direction.Y ? -1 : 1;
 
 			if ( A != 0 && B == 0 ) {
 
-				//p.Y = point.Y + (range * dirY);
 				p.Y = p.Y + ( shift * direction.Y );
 			} else if ( A == 0 && B != 0 ) {
 
-				//p.X = point.X + (range * dirX);
 				p.X = p.X + ( shift * direction.X );
 			} else {
 				double a = -1 * ( A / B );
